@@ -94,10 +94,20 @@ Run the setup script to build the Wine environment. *(Remember to check "Add to 
 
 ```bash
 ./start.sh
-
 ```
-
 Follow the interactive prompts to inject your IP, name your payload, and launch the listener.
 
----
+## 🏆 Acknowledgments & Credits
+
+**REVPDF** serves as the automated wrapper and deployment framework, but the core evasion capabilities of the PowerShell reverse shell (`rs_2026.ps1`) utilized in this toolkit are powered by the incredible research and development from the open-source community.
+
+Massive thanks and full rights for the underlying AV-bypass payload mechanics go to the creators of **PSSW100AVB**. 
+
+<div align="center">
+
+[![GitHub Repo](https://img.shields.io/badge/tihanyin-PSSW100AVB-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tihanyin/PSSW100AVB)
+
+*Highly recommend checking out their original repository for a deep dive into Windows AV/EDR evasion techniques!*
+
+</div>
 

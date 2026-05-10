@@ -37,16 +37,25 @@ wine reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion" /v ProductName 
 # ==========================================
 # PHASE 3: PYTHON & TOOL INSTALLATION
 # ==========================================
-if [ ! -f "python-3.11.9.exe" ]; then
+
+PYTHON_FILE="python-3.11.9.exe"
+
+# Check if file exists AND has a size greater than 0
+if [ -s "$PYTHON_FILE" ]; then
+    echo "[*] $PYTHON_FILE already exists. Skipping download..."
+else
     echo "[+] Downloading 32-bit Windows Python installer..."
-    wget https://www.python.org/ftp/python/3.11.9/python-3.11.9.exe
+    # -c allows resuming if the download was interrupted previously
+    wget -c https://www.python.org/ftp/python/3.11.9/python-3.11.9.exe
 fi
 
 echo -e "\n\033[1;31m[!] IMPORTANT: In the popup window:\033[0m"
 echo "    1. Check 'Add Python to PATH'"
 echo "    2. Click 'Install Now'"
 echo "    3. Click 'Close' when finished to continue the script."
-wine python-3.11.9.exe
+
+# Running the installer via Wine
+wine "$PYTHON_FILE"
 
 # The 32-bit installation path
 PY_PATH="/root/.wine/drive_c/users/root/AppData/Local/Programs/Python/Python311-32/python.exe"
